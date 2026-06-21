@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Business Growth Advisor – Free AI Business Growth Diagnostic & Action Plan Tool</title>
+<meta name="description" content="Free AI Business Growth Advisor. Get an instant growth score, bottleneck diagnosis, and a personalized action plan for your small business, startup, or freelance practice. No signup required.">
+<meta name="keywords" content="business growth advisor, ai business tool, business diagnostic, growth score, small business growth plan, startup advisor ai, free business analysis tool">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Business Growth Advisor – AI-Powered Business Growth Diagnostic">
+<meta property="og:description" content="Answer a few questions about your business and get an instant AI-generated growth score, bottleneck analysis, and 90-day action plan.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a0e17">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Business Growth Advisor",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": "Free AI-powered tool that diagnoses business growth bottlenecks and generates a personalized action plan.",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "212"
+  }
+}
+</script>
+
+<style>
+  :root{
+    --bg-void: #0a0e17;
+    --bg-panel: #10141f;
+    --bg-panel-2: #151b2b;
+    --border-line: #1f2940;
+    --neon-cyan: #00f0ff;
+    --neon-purple: #b14eff;
+    --neon-green: #39ff8a;
+    --neon-amber: #ffb800;
+    --neon-red: #ff3b5c;
+    --text-bright: #eaf2ff;
+    --text-dim: #8a97b3;
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Rajdhani', sans-serif;
+    --font-mono: 'Share Tech Mono', monospace;
+  }
+
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:
+      radial-gradient(circle at 20% 10%, rgba(0,240,255,0.07), transparent 40%),
+      radial-gradient(circle at 80% 90%, rgba(177,78,255,0.08), transparent 40%),
+      var(--bg-void);
+    color:var(--text-bright);
+    font-family:var(--font-body);
+    min-height:100vh;
+    line-height:1.5;
+  }
+
+  .scanlines{
+    position:fixed; inset:0; pointer-events:none; z-index:0; opacity:0.03;
+    background:repeating-linear-gradient(0deg, #fff 0px, transparent 1px, transparent 2px);
+  }
+
+  a{color:var(--neon-cyan);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    border-bottom:1px solid var(--border-line);
+    padding:18px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    background:rgba(10,14,23,0.85);
+    backdrop-filter:blur(8px);
+    position:sticky; top:0; z-index:50;
+    flex-wrap:wrap; gap:12px;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-icon{
+    width:42px;height:42px;border-radius:10px;
+    background:linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-display); font-weight:900; color:#04060a; font-size:18px;
+    box-shadow:0 0 20px rgba(0,240,255,0.4);
+  }
+  .brand-text h1{
+    font-family:var(--font-display); font-size:18px; letter-spacing:1px;
+    background:linear-gradient(90deg,var(--neon-cyan),var(--neon-purple));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .brand-text span{font-size:11px; color:var(--text-dim); font-family:var(--font-mono); letter-spacing:1px;}
+
+  .header-actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap;}
+  .badge{
+    font-family:var(--font-mono); font-size:11px; padding:6px 12px; border-radius:20px;
+    border:1px solid var(--neon-green); color:var(--neon-green); background:rgba(57,255,138,0.07);
+  }
+  .btn-pro{
+    font-family:var(--font-display); font-size:12px; padding:9px 16px; border-radius:8px;
+    background:linear-gradient(135deg, var(--neon-amber), #ff7a00); color:#1a0c00; font-weight:700;
+    border:none; cursor:pointer; letter-spacing:0.5px;
+    box-shadow:0 0 18px rgba(255,184,0,0.35);
+  }
+  .btn-pro:hover{filter:brightness(1.1);}
+
+  /* ---------- LAYOUT ---------- */
+  main{max-width:1180px; margin:0 auto; padding:36px 20px 80px; position:relative; z-index:1;}
+
+  .hero{text-align:center; margin-bottom:38px;}
+  .hero h2{
+    font-family:var(--font-display); font-size:clamp(22px,4vw,36px); font-weight:900;
+    letter-spacing:0.5px; margin-bottom:12px; color:var(--text-bright);
+  }
+  .hero h2 .accent{color:var(--neon-cyan); text-shadow:0 0 18px rgba(0,240,255,0.5);}
+  .hero p{color:var(--text-dim); max-width:680px; margin:0 auto; font-size:15.5px;}
+
+  .panel{
+    background:linear-gradient(145deg, var(--bg-panel), var(--bg-panel-2));
+    border:1px solid var(--border-line);
+    border-radius:16px;
+    padding:28px;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset, 0 10px 30px rgba(0,0,0,0.35);
+  }
+
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:720px){ .grid-2{grid-template-columns:1fr;} }
+
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block; font-size:13px; font-weight:600; color:var(--neon-cyan);
+    margin-bottom:7px; letter-spacing:0.3px; text-transform:uppercase; font-family:var(--font-mono); font-size:11.5px;
+  }
+  .field .hint{display:block; font-size:11.5px; color:var(--text-dim); margin-top:5px; font-weight:400; text-transform:none; font-family:var(--font-body);}
+
+  input[type=text], input[type=number], input[type=email], select, textarea{
+    width:100%; padding:12px 14px; border-radius:9px; border:1px solid var(--border-line);
+    background:#0c1018; color:var(--text-bright); font-family:var(--font-body); font-size:14.5px;
+    outline:none; transition:0.2s;
+  }
+  input:focus, select:focus, textarea:focus{
+    border-color:var(--neon-cyan); box-shadow:0 0 0 3px rgba(0,240,255,0.12);
+  }
+  textarea{resize:vertical; min-height:80px;}
+
+  .range-row{display:flex; align-items:center; gap:14px;}
+  input[type=range]{flex:1; accent-color:var(--neon-cyan);}
+  .range-val{
+    font-family:var(--font-mono); font-size:15px; color:var(--neon-green); min-width:48px; text-align:right;
+  }
+
+  .chip-group{display:flex; flex-wrap:wrap; gap:8px;}
+  .chip{
+    padding:8px 14px; border-radius:20px; border:1px solid var(--border-line); cursor:pointer;
+    font-size:13px; color:var(--text-dim); background:#0c1018; transition:0.15s; user-select:none;
+  }
+  .chip.active{
+    border-color:var(--neon-purple); color:#fff; background:rgba(177,78,255,0.18);
+    box-shadow:0 0 12px rgba(177,78,255,0.3);
+  }
+
+  .section-title{
+    font-family:var(--font-display); font-size:14px; color:var(--text-bright); letter-spacing:1px;
+    margin:26px 0 16px; padding-bottom:10px; border-bottom:1px solid var(--border-line);
+    display:flex; align-items:center; gap:8px;
+  }
+  .section-title:first-child{margin-top:0;}
+  .section-title .dot{width:8px;height:8px;border-radius:50%; background:var(--neon-cyan); box-shadow:0 0 8px var(--neon-cyan);}
+
+  .analyze-btn{
+    width:100%; margin-top:10px; padding:16px; border-radius:11px; border:none; cursor:pointer;
+    font-family:var(--font-display); font-size:15px; letter-spacing:1px; font-weight:700;
+    background:linear-gradient(135deg, var(--neon-cyan), var(--neon-purple)); color:#04060a;
+    box-shadow:0 0 28px rgba(0,240,255,0.3);
+    transition:0.2s;
+  }
+  .analyze-btn:hover{transform:translateY(-1px); box-shadow:0 0 36px rgba(0,240,255,0.45);}
+  .analyze-btn:disabled{opacity:0.6; cursor:not-allowed;}
+
+  /* ---------- RESULTS ---------- */
+  #resultsWrap{display:none; margin-top:34px;}
+
+  .score-card{
+    display:flex; align-items:center; gap:28px; flex-wrap:wrap; justify-content:center;
+    padding:30px; margin-bottom:24px;
+  }
+  .score-ring{position:relative; width:160px; height:160px; flex-shrink:0;}
+  .score-ring svg{width:100%; height:100%; transform:rotate(-90deg);}
+  .score-ring .bg{fill:none; stroke:#1c2438; stroke-width:12;}
+  .score-ring .fg{fill:none; stroke-width:12; stroke-linecap:round; transition:stroke-dashoffset 1.2s ease;}
+  .score-num{
+    position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .score-num .val{font-family:var(--font-display); font-size:38px; font-weight:900;}
+  .score-num .lbl{font-size:11px; color:var(--text-dim); font-family:var(--font-mono); letter-spacing:1px;}
+
+  .score-meta{flex:1; min-width:240px;}
+  .score-meta h3{font-family:var(--font-display); font-size:20px; margin-bottom:8px;}
+  .score-meta p{color:var(--text-dim); font-size:14.5px;}
+  .stage-tag{
+    display:inline-block; margin-top:10px; padding:6px 14px; border-radius:20px;
+    font-family:var(--font-mono); font-size:12px; letter-spacing:0.5px;
+  }
+
+  .pillars{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px;}
+  @media(max-width:900px){.pillars{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.pillars{grid-template-columns:1fr;}}
+  .pillar-card{
+    background:#0d1119; border:1px solid var(--border-line); border-radius:12px; padding:16px;
+  }
+  .pillar-card .ph{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+  .pillar-card .pname{font-size:12.5px; font-weight:700; color:var(--text-bright); text-transform:uppercase; letter-spacing:0.5px;}
+  .pillar-card .pscore{font-family:var(--font-mono); font-size:14px; font-weight:700;}
+  .bar-track{height:7px; background:#1c2438; border-radius:4px; overflow:hidden;}
+  .bar-fill{height:100%; border-radius:4px; transition:width 1s ease;}
+
+  .bottleneck-box{
+    border-left:3px solid var(--neon-red); background:rgba(255,59,92,0.06);
+    padding:18px; border-radius:0 10px 10px 0; margin-bottom:24px;
+  }
+  .bottleneck-box h4{color:var(--neon-red); font-family:var(--font-display); font-size:14px; margin-bottom:8px; letter-spacing:0.5px;}
+  .bottleneck-box p{color:var(--text-bright); font-size:14.5px;}
+
+  .reco-list{display:flex; flex-direction:column; gap:14px; margin-bottom:24px;}
+  .reco-item{
+    display:flex; gap:14px; padding:16px; border-radius:11px; background:#0d1119; border:1px solid var(--border-line);
+  }
+  .reco-rank{
+    flex-shrink:0; width:34px; height:34px; border-radius:8px; display:flex; align-items:center; justify-content:center;
+    font-family:var(--font-display); font-weight:700; font-size:14px; background:rgba(0,240,255,0.1); color:var(--neon-cyan);
+    border:1px solid var(--neon-cyan);
+  }
+  .reco-body h5{font-size:14.5px; font-weight:700; margin-bottom:4px; color:var(--text-bright);}
+  .reco-body p{font-size:13.5px; color:var(--text-dim);}
+  .reco-tags{display:flex; gap:8px; margin-top:8px; flex-wrap:wrap;}
+  .reco-tag{font-family:var(--font-mono); font-size:10.5px; padding:3px 9px; border-radius:10px; background:#181f30; color:var(--neon-green);}
+
+  .roadmap{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px;}
+  @media(max-width:800px){.roadmap{grid-template-columns:1fr;}}
+  .road-card{background:#0d1119; border:1px solid var(--border-line); border-radius:12px; padding:18px;}
+  .road-card .rh{font-family:var(--font-display); font-size:13px; color:var(--neon-purple); margin-bottom:10px; letter-spacing:0.5px;}
+  .road-card ul{padding-left:18px; color:var(--text-dim); font-size:13.5px; display:flex; flex-direction:column; gap:6px;}
+
+  .action-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:10px;}
+  .btn-secondary{
+    flex:1; min-width:160px; padding:13px; border-radius:9px; border:1px solid var(--border-line);
+    background:#0d1119; color:var(--text-bright); font-family:var(--font-body); font-weight:600; font-size:13.5px;
+    cursor:pointer; transition:0.2s;
+  }
+  .btn-secondary:hover{border-color:var(--neon-cyan); color:var(--neon-cyan);}
+
+  /* ---------- AD SLOTS ---------- */
+  .ad-slot{
+    margin:30px 0; padding:14px; text-align:center; border:1px dashed var(--border-line);
+    border-radius:10px; color:var(--text-dim); font-family:var(--font-mono); font-size:11px;
+    background:rgba(255,255,255,0.015);
+  }
+
+  /* ---------- PRICING ---------- */
+  .pricing-wrap{margin-top:60px;}
+  .pricing-title{text-align:center; margin-bottom:30px;}
+  .pricing-title h2{font-family:var(--font-display); font-size:24px; margin-bottom:8px;}
+  .pricing-title p{color:var(--text-dim); font-size:14.5px;}
+  .pricing-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media(max-width:900px){.pricing-grid{grid-template-columns:1fr;}}
+  .price-card{
+    background:linear-gradient(145deg, var(--bg-panel), var(--bg-panel-2));
+    border:1px solid var(--border-line); border-radius:16px; padding:26px; position:relative;
+  }
+  .price-card.featured{border-color:var(--neon-cyan); box-shadow:0 0 30px rgba(0,240,255,0.15);}
+  .price-card .pc-tag{
+    position:absolute; top:-12px; right:20px; background:var(--neon-cyan); color:#04060a;
+    font-family:var(--font-mono); font-size:10.5px; padding:4px 10px; border-radius:20px; font-weight:700;
+  }
+  .price-card h3{font-family:var(--font-display); font-size:16px; margin-bottom:6px;}
+  .price-card .price{font-size:30px; font-weight:900; font-family:var(--font-display); margin:10px 0;}
+  .price-card .price span{font-size:13px; color:var(--text-dim); font-family:var(--font-body); font-weight:500;}
+  .price-card ul{list-style:none; margin:18px 0; display:flex; flex-direction:column; gap:10px;}
+  .price-card ul li{font-size:13.5px; color:var(--text-dim); display:flex; gap:8px; align-items:flex-start;}
+  .price-card ul li::before{content:"✓"; color:var(--neon-green); font-weight:700;}
+  .price-card button{
+    width:100%; padding:12px; border-radius:9px; border:1px solid var(--border-line); background:transparent;
+    color:var(--text-bright); font-family:var(--font-body); font-weight:700; cursor:pointer; font-size:13.5px;
+  }
+  .price-card.featured button{background:linear-gradient(135deg,var(--neon-cyan),var(--neon-purple)); color:#04060a; border:none;}
+
+  /* ---------- FAQ ---------- */
+  .faq-wrap{margin-top:60px;}
+  .faq-wrap h2{font-family:var(--font-display); font-size:22px; text-align:center; margin-bottom:24px;}
+  .faq-item{border:1px solid var(--border-line); border-radius:10px; margin-bottom:10px; overflow:hidden; background:#0d1119;}
+  .faq-q{padding:16px 18px; cursor:pointer; display:flex; justify-content:space-between; align-items:center; font-weight:600; font-size:14.5px;}
+  .faq-q .arrow{color:var(--neon-cyan); transition:0.3s;}
+  .faq-a{padding:0 18px; max-height:0; overflow:hidden; transition:0.3s; color:var(--text-dim); font-size:13.5px;}
+  .faq-item.open .faq-a{padding:0 18px 16px; max-height:300px;}
+  .faq-item.open .arrow{transform:rotate(180deg);}
+
+  /* ---------- HOW TO USE ---------- */
+  .how-wrap{margin-top:60px;}
+  .how-wrap h2{font-family:var(--font-display); font-size:22px; text-align:center; margin-bottom:26px;}
+  .how-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media(max-width:900px){.how-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.how-grid{grid-template-columns:1fr;}}
+  .how-card{background:#0d1119; border:1px solid var(--border-line); border-radius:12px; padding:20px; text-align:center;}
+  .how-num{
+    width:36px;height:36px;border-radius:50%; margin:0 auto 12px; display:flex; align-items:center; justify-content:center;
+    background:rgba(0,240,255,0.1); border:1px solid var(--neon-cyan); color:var(--neon-cyan); font-family:var(--font-display); font-weight:700;
+  }
+  .how-card h4{font-size:14px; margin-bottom:6px;}
+  .how-card p{font-size:12.5px; color:var(--text-dim);}
+
+  /* ---------- HINDI GUIDE ---------- */
+  .hindi-guide{
+    margin-top:60px; background:linear-gradient(145deg, var(--bg-panel), var(--bg-panel-2));
+    border:1px solid var(--border-line); border-radius:16px; padding:28px;
+  }
+  .hindi-guide h2{font-family:var(--font-display); font-size:20px; margin-bottom:16px; color:var(--neon-amber);}
+  .hindi-guide h3{font-size:15px; color:var(--neon-cyan); margin:18px 0 8px;}
+  .hindi-guide p, .hindi-guide li{font-size:14px; color:var(--text-dim); line-height:1.8;}
+  .hindi-guide ul{padding-left:20px;}
+
+  footer{
+    text-align:center; padding:30px 20px; border-top:1px solid var(--border-line); color:var(--text-dim);
+    font-size:12.5px; margin-top:60px;
+  }
+  footer a{margin:0 8px; color:var(--text-dim); text-decoration:none;}
+  footer a:hover{color:var(--neon-cyan);}
+
+  .pulse{animation:pulse 2s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.5;}}
+
+  .loader{
+    display:flex; align-items:center; justify-content:center; gap:10px; padding:20px; color:var(--text-dim);
+    font-family:var(--font-mono); font-size:13px;
+  }
+  .spinner{
+    width:18px;height:18px;border-radius:50%; border:3px solid #1c2438; border-top-color:var(--neon-cyan);
+    animation:spin 0.8s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+</style>
+</head>
+<body>
+
+<div class="scanlines"></div>
+
+<header>
+  <div class="brand">
+    <div class="brand-icon">BG</div>
+    <div class="brand-text">
+      <h1>BUSINESS GROWTH ADVISOR</h1>
+      <span>AI DIAGNOSTIC ENGINE v1.0</span>
+    </div>
+  </div>
+  <div class="header-actions">
+    <span class="badge pulse">● FREE TOOL — NO SIGNUP</span>
+    <button class="btn-pro" onclick="document.getElementById('pricing').scrollIntoView({behavior:'smooth'})">⚡ GO PRO</button>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <h2>Find Out Exactly What's <span class="accent">Blocking Your Business Growth</span></h2>
+    <p>Answer a few quick questions about your business. Our AI engine analyzes 4 core growth pillars, identifies your #1 bottleneck, and builds a personalized 90-day action plan — instantly, for free.</p>
+  </div>
+
+  <div class="panel" id="inputPanel">
+
+    <div class="section-title"><span class="dot"></span> BUSINESS PROFILE</div>
+    <div class="grid-2">
+      <div class="field">
+        <label>Business Name (Optional)</label>
+        <input type="text" id="bizName" placeholder="e.g. Sharma Handicrafts">
+      </div>
+      <div class="field">
+        <label>Country / Market</label>
+        <select id="country">
+          <option value="India">India</option>
+          <option value="USA">United States</option>
+          <option value="UK">United Kingdom</option>
+          <option value="Canada">Canada</option>
+          <option value="Australia">Australia</option>
+          <option value="Other">Other / Global</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <div class="field">
+        <label>Business Type</label>
+        <select id="bizType">
+          <option value="Freelancer/Solo">Freelancer / Solopreneur</option>
+          <option value="Local Service">Local Service Business</option>
+          <option value="E-commerce">E-commerce / Online Store</option>
+          <option value="SaaS/Digital">SaaS / Digital Product</option>
+          <option value="Content/Creator">Content Creator / Influencer</option>
+          <option value="Retail">Retail / Brick & Mortar</option>
+          <option value="B2B">B2B / Consulting</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Business Age</label>
+        <select id="bizAge">
+          <option value="idea">Idea Stage (Not launched)</option>
+          <option value="0-1">0–1 Year</option>
+          <option value="1-3">1–3 Years</option>
+          <option value="3-7">3–7 Years</option>
+          <option value="7+">7+ Years</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Monthly Revenue (Approx., in your local currency)</label>
+      <input type="number" id="revenue" placeholder="e.g. 50000" min="0">
+      <span class="hint">Enter 0 if pre-revenue. This stays on your device — nothing is uploaded.</span>
+    </div>
+
+    <div class="section-title"><span class="dot"></span> GROWTH PILLAR SELF-RATING</div>
+    <p class="hint" style="margin-bottom:16px;">Rate each area honestly from 1 (very weak) to 10 (excellent). This drives the AI scoring engine.</p>
+
+    <div class="field">
+      <label>1. Customer Acquisition (Getting new customers consistently)</label>
+      <div class="range-row">
+        <input type="range" id="r_acquisition" min="1" max="10" value="5" oninput="document.getElementById('v_acquisition').textContent=this.value">
+        <span class="range-val" id="v_acquisition">5</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>2. Retention & Repeat Business (Customers coming back)</label>
+      <div class="range-row">
+        <input type="range" id="r_retention" min="1" max="10" value="5" oninput="document.getElementById('v_retention').textContent=this.value">
+        <span class="range-val" id="v_retention">5</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>3. Operations & Systems (Processes, delegation, efficiency)</label>
+      <div class="range-row">
+        <input type="range" id="r_operations" min="1" max="10" value="5" oninput="document.getElementById('v_operations').textContent=this.value">
+        <span class="range-val" id="v_operations">5</span>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>4. Finance & Pricing (Profit margins, cash flow, pricing power)</label>
+      <div class="range-row">
+        <input type="range" id="r_finance" min="1" max="10" value="5" oninput="document.getElementById('v_finance').textContent=this.value">
+        <span class="range-val" id="v_finance">5</span>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="dot"></span> BIGGEST CHALLENGES (Select all that apply)</div>
+    <div class="chip-group" id="challengeChips">
+      <div class="chip" data-val="leads">Not enough leads</div>
+      <div class="chip" data-val="conversion">Low conversion rate</div>
+      <div class="chip" data-val="pricing">Underpricing / Low margins</div>
+      <div class="chip" data-val="time">No time / Overworked</div>
+      <div class="chip" data-val="marketing">Don't know marketing</div>
+      <div class="chip" data-val="competition">Heavy competition</div>
+      <div class="chip" data-val="cashflow">Cash flow problems</div>
+      <div class="chip" data-val="team">Can't find/manage team</div>
+      <div class="chip" data-val="scaling">Don't know how to scale</div>
+      <div class="chip" data-val="branding">Weak brand/online presence</div>
+    </div>
+
+    <div class="field" style="margin-top:20px;">
+      <label>Primary Growth Goal (Next 6–12 months)</label>
+      <select id="goal">
+        <option value="revenue">Increase Revenue</option>
+        <option value="customers">Get More Customers</option>
+        <option value="efficiency">Improve Efficiency / Reduce Workload</option>
+        <option value="scale">Scale to New Markets/Products</option>
+        <option value="stability">Stabilize Cash Flow</option>
+        <option value="brand">Build Brand Recognition</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Anything specific you want the AI to consider? (Optional)</label>
+      <textarea id="notes" placeholder="e.g. I run a 2-person bakery, mostly Instagram orders, struggling with delivery logistics..."></textarea>
+    </div>
+
+    <button class="analyze-btn" id="analyzeBtn" onclick="runAnalysis()">🚀 RUN AI GROWTH DIAGNOSIS</button>
+  </div>
+
+  <div class="ad-slot">[ AD SLOT — Leaderboard 728x90 / Responsive — Google AdSense ]</div>
+
+  <div id="loaderWrap" style="display:none;">
+    <div class="panel loader">
+      <div class="spinner"></div>
+      <span id="loaderText">Analyzing growth pillars...</span>
+    </div>
+  </div>
+
+  <div id="resultsWrap">
+
+    <div class="panel score-card">
+      <div class="score-ring">
+        <svg viewBox="0 0 160 160">
+          <circle class="bg" cx="80" cy="80" r="68"></circle>
+          <circle class="fg" id="scoreCircle" cx="80" cy="80" r="68" stroke-dasharray="427" stroke-dashoffset="427"></circle>
+        </svg>
+        <div class="score-num">
+          <div class="val" id="scoreVal">0</div>
+          <div class="lbl">GROWTH SCORE</div>
+        </div>
+      </div>
+      <div class="score-meta">
+        <h3 id="scoreHeadline">Your Business Growth Diagnosis</h3>
+        <p id="scoreSummary">—</p>
+        <span class="stage-tag" id="stageTag">—</span>
+      </div>
+    </div>
+
+    <div class="section-title"><span class="dot"></span> GROWTH PILLAR BREAKDOWN</div>
+    <div class="pillars" id="pillarsGrid"></div>
+
+    <div class="section-title"><span class="dot"></span> #1 GROWTH BOTTLENECK</div>
+    <div class="bottleneck-box">
+      <h4 id="bottleneckTitle">⚠ Primary Bottleneck</h4>
+      <p id="bottleneckText">—</p>
+    </div>
+
+    <div class="ad-slot">[ AD SLOT — In-content Native Ad — Google AdSense ]</div>
+
+    <div class="section-title"><span class="dot"></span> TOP ACTIONABLE RECOMMENDATIONS</div>
+    <div class="reco-list" id="recoList"></div>
+
+    <div class="section-title"><span class="dot"></span> 90-DAY ROADMAP</div>
+    <div class="roadmap" id="roadmapGrid"></div>
+
+    <div class="action-row">
+      <button class="btn-secondary" onclick="downloadReport()">⬇ Download Report (.txt)</button>
+      <button class="btn-secondary" onclick="window.print()">🖨 Print Report</button>
+      <button class="btn-secondary" onclick="resetTool()">↻ Run New Diagnosis</button>
+    </div>
+  </div>
+
+  <div class="ad-slot">[ AD SLOT — Responsive Display Ad — Google AdSense ]</div>
+
+  <!-- PRICING -->
+  <div class="pricing-wrap" id="pricing">
+    <div class="pricing-title">
+      <h2>Upgrade Your Growth Engine</h2>
+      <p>Free diagnosis is just the start. Go deeper with Pro and Agency plans.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>FREE</h3>
+        <div class="price">$0<span>/forever</span></div>
+        <ul>
+          <li>1 Growth Diagnosis per session</li>
+          <li>4-Pillar Score Breakdown</li>
+          <li>Top 3 Recommendations</li>
+          <li>90-Day Roadmap (Summary)</li>
+          <li>Downloadable text report</li>
+        </ul>
+        <button disabled style="opacity:0.5;cursor:default;">Current Plan</button>
+      </div>
+      <div class="price-card featured">
+        <span class="pc-tag">MOST POPULAR</span>
+        <h3>PRO</h3>
+        <div class="price">$9<span>/month</span></div>
+        <ul>
+          <li>Unlimited diagnoses, saved history</li>
+          <li>Full PDF report with charts & branding</li>
+          <li>Detailed week-by-week 90-day plan</li>
+          <li>Competitor benchmark comparison</li>
+          <li>Email re-check reminders (30/60/90 day)</li>
+          <li>Industry-specific recommendation packs</li>
+        </ul>
+        <button onclick="alert('Pro checkout coming soon! Connect Stripe/Razorpay here.')">Upgrade to Pro</button>
+      </div>
+      <div class="price-card">
+        <h3>AGENCY</h3>
+        <div class="price">$29<span>/month</span></div>
+        <ul>
+          <li>Everything in Pro</li>
+          <li>White-label reports for clients</li>
+          <li>Bulk diagnosis for multiple businesses</li>
+          <li>Custom branding & logo on reports</li>
+          <li>Priority AI model (Claude-powered deep analysis)</li>
+          <li>API access for integration</li>
+        </ul>
+        <button onclick="alert('Agency plan checkout coming soon!')">Get Agency Plan</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-slot">[ AD SLOT — Responsive Display Ad — Google AdSense ]</div>
+
+  <!-- HOW TO USE -->
+  <div class="how-wrap">
+    <h2>How To Use This Tool</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <h4>Fill Business Profile</h4>
+        <p>Enter your business type, age, market, and approximate revenue.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <h4>Rate Your Pillars</h4>
+        <p>Honestly rate Acquisition, Retention, Operations & Finance.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <h4>Select Challenges</h4>
+        <p>Pick the real problems holding your business back right now.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">4</div>
+        <h4>Get Your Action Plan</h4>
+        <p>Receive an instant score, bottleneck diagnosis & 90-day roadmap.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq-wrap">
+    <h2>Frequently Asked Questions</h2>
+    <div id="faqContainer"></div>
+  </div>
+
+  <!-- HINDI GUIDE -->
+  <div class="hindi-guide">
+    <h2>📘 उपयोग गाइड (Hindi Usage Guide)</h2>
+    <p><strong>Business Growth Advisor</strong> एक AI-powered diagnostic tool है जो आपके business की growth में आ रही रुकावटों को पहचानता है और एक personalized action plan देता है।</p>
+
+    <h3>इसका उपयोग कैसे करें:</h3>
+    <ul>
+      <li><strong>Step 1:</strong> अपना business type, age, country और approximate monthly revenue भरें।</li>
+      <li><strong>Step 2:</strong> चार Growth Pillars — Customer Acquisition, Retention, Operations, और Finance — को 1 से 10 के बीच ईमानदारी से rate करें।</li>
+      <li><strong>Step 3:</strong> अपने सबसे बड़े challenges select करें (जैसे leads की कमी, low margins, time की कमी आदि)।</li>
+      <li><strong>Step 4:</strong> "RUN AI GROWTH DIAGNOSIS" बटन दबाएं और तुरंत अपना Growth Score, Bottleneck Analysis और 90-Day Roadmap पाएं।</li>
+    </ul>
+
+    <h3>यह किसके लिए उपयोगी है:</h3>
+    <p>Freelancers, छोटे दुकानदार, e-commerce sellers, content creators, और service-based businesses — जो भी अपने business को systematic तरीके से grow करना चाहते हैं, उनके लिए यह tool बेहद उपयोगी है।</p>
+
+    <h3>ध्यान दें:</h3>
+    <p>यह tool आपकी दी गई जानकारी के आधार पर logic-based सुझाव देता है। यह licensed financial/business consultant की सलाह का विकल्प नहीं है। बड़े फैसले लेने से पहले किसी qualified advisor से सलाह लें।</p>
+  </div>
+
+</main>
+
+<footer>
+  <div>© 2026 Business Growth Advisor — Part of IncomeAIHub Network. All rights reserved.</div>
+  <div style="margin-top:10px;">
+    <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Disclaimer</a> | <a href="#">Contact</a>
+  </div>
+  <div style="margin-top:10px; font-size:11px;">This tool provides general business guidance based on self-reported data and does not constitute professional financial, legal, or business consulting advice.</div>
+</footer>
+
+<script>
+/* ============ STATE ============ */
+let selectedChallenges = new Set();
+
+document.querySelectorAll('#challengeChips .chip').forEach(chip=>{
+  chip.addEventListener('click', ()=>{
+    chip.classList.toggle('active');
+    const val = chip.dataset.val;
+    if(selectedChallenges.has(val)) selectedChallenges.delete(val);
+    else selectedChallenges.add(val);
+  });
+});
+
+/* ============ FAQ DATA ============ */
+const faqs = [
+  {
+    q:"Is Business Growth Advisor really free to use?",
+    a:"Yes. The core diagnosis — growth score, pillar breakdown, bottleneck analysis, and top recommendations — is completely free with no signup required. A Pro plan exists for unlimited history, PDF exports, and deeper week-by-week planning."
+  },
+  {
+    q:"How accurate is the AI growth analysis?",
+    a:"The tool uses a structured scoring engine based on your self-rated inputs across four core business pillars (Acquisition, Retention, Operations, Finance) combined with your selected challenges and goals. It's designed to highlight patterns and priorities, not replace a professional consultant's judgment."
+  },
+  {
+    q:"Is my business data stored or shared anywhere?",
+    a:"No. All calculations run directly in your browser using JavaScript. Nothing you enter is uploaded to a server or shared with third parties."
+  },
+  {
+    q:"Can I use this for any type of business?",
+    a:"Yes. The tool is built to work for freelancers, local service businesses, e-commerce stores, SaaS products, content creators, retail shops, and B2B consultants across India, USA, UK, Canada, Australia, and other global markets."
+  },
+  {
+    q:"How often should I re-run the diagnosis?",
+    a:"We recommend re-running it every 30-60 days, especially after implementing recommendations, to track how your growth score and bottlenecks shift over time."
+  },
+  {
+    q:"What makes this different from generic business advice articles?",
+    a:"Instead of generic tips, this tool personalizes its output based on your specific scores, business type, stage, and selected challenges — producing a prioritized action plan unique to your inputs rather than a one-size-fits-all checklist."
+  }
+];
+
+function renderFaqs(){
+  const container = document.getElementById('faqContainer');
+  faqs.forEach((f,i)=>{
+    const item = document.createElement('div');
+    item.className='faq-item';
+    item.innerHTML = `
+      <div class="faq-q" onclick="toggleFaq(${i})">
+        <span>${f.q}</span>
+        <span class="arrow">▼</span>
+      </div>
+      <div class="faq-a"><p style="padding-top:4px;">${f.a}</p></div>
+    `;
+    container.appendChild(item);
+  });
+}
+function toggleFaq(i){
+  const items = document.querySelectorAll('.faq-item');
+  items[i].classList.toggle('open');
+}
+renderFaqs();
+
+/* ============ SEO FAQ SCHEMA (injected for AdSense/SEO safety) ============ */
+(function injectFaqSchema(){
+  const schema = {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity": faqs.map(f=>({
+      "@type":"Question",
+      "name": f.q,
+      "acceptedAnswer":{"@type":"Answer","text":f.a}
+    }))
+  };
+  const s = document.createElement('script');
+  s.type='application/ld+json';
+  s.textContent = JSON.stringify(schema);
+  document.head.appendChild(s);
+})();
+
+/* ============ ANALYSIS ENGINE ============ */
+function runAnalysis(){
+  const btn = document.getElementById('analyzeBtn');
+  btn.disabled = true;
+
+  document.getElementById('loaderWrap').style.display='block';
+  document.getElementById('resultsWrap').style.display='none';
+
+  const msgs = ["Analyzing growth pillars...","Identifying bottleneck...","Building 90-day roadmap...","Finalizing recommendations..."];
+  let mi=0;
+  const loaderText = document.getElementById('loaderText');
+  const interval = setInterval(()=>{ mi=(mi+1)%msgs.length; loaderText.textContent = msgs[mi]; }, 500);
+
+  setTimeout(()=>{
+    clearInterval(interval);
+    performAnalysis();
+    document.getElementById('loaderWrap').style.display='none';
+    document.getElementById('resultsWrap').style.display='block';
+    document.getElementById('resultsWrap').scrollIntoView({behavior:'smooth'});
+    btn.disabled = false;
+  }, 2200);
+}
+
+function performAnalysis(){
+  // Gather inputs
+  const bizName = document.getElementById('bizName').value.trim() || "Your Business";
+  const country = document.getElementById('country').value;
+  const bizType = document.getElementById('bizType').value;
+  const bizAge = document.getElementById('bizAge').value;
+  const revenue = parseFloat(document.getElementById('revenue').value) || 0;
+  const goal = document.getElementById('goal').value;
+  const notes = document.getElementById('notes').value.trim();
+
+  const pillars = {
+    acquisition: parseInt(document.getElementById('r_acquisition').value),
+    retention: parseInt(document.getElementById('r_retention').value),
+    operations: parseInt(document.getElementById('r_operations').value),
+    finance: parseInt(document.getElementById('r_finance').value)
+  };
+
+  const pillarLabels = {
+    acquisition:"Customer Acquisition",
+    retention:"Retention & Loyalty",
+    operations:"Operations & Systems",
+    finance:"Finance & Pricing"
+  };
+
+  const pillarColors = {
+    acquisition:"var(--neon-cyan)",
+    retention:"var(--neon-purple)",
+    operations:"var(--neon-amber)",
+    finance:"var(--neon-green)"
+  };
+
+  // ---- Weighted scoring logic ----
+  // Base weight per pillar, adjusted by business type & stage
+  let weights = {acquisition:0.3, retention:0.25, operations:0.2, finance:0.25};
+
+  if(bizAge === "idea" || bizAge === "0-1"){
+    weights = {acquisition:0.4, retention:0.15, operations:0.2, finance:0.25};
+  } else if(bizAge === "3-7" || bizAge === "7+"){
+    weights = {acquisition:0.2, retention:0.3, operations:0.3, finance:0.2};
+  }
+
+  if(bizType === "E-commerce" || bizType === "Content/Creator"){
+    weights.acquisition += 0.05; weights.retention += 0.05; weights.operations -= 0.05; weights.finance -= 0.05;
+  }
+  if(bizType === "SaaS/Digital"){
+    weights.retention += 0.1; weights.acquisition -= 0.05; weights.operations -= 0.05;
+  }
+
+  // Challenge penalty modifiers (challenges reduce effective pillar weight performance slightly)
+  const challengeMap = {
+    leads:"acquisition", conversion:"acquisition", marketing:"acquisition", competition:"acquisition", branding:"acquisition",
+    pricing:"finance", cashflow:"finance",
+    time:"operations", team:"operations", scaling:"operations"
+  };
+
+  let penalty = {acquisition:0, retention:0, operations:0, finance:0};
+  selectedChallenges.forEach(c=>{
+    const pillar = challengeMap[c];
+    if(pillar) penalty[pillar] += 0.6;
+  });
+
+  const adjustedScores = {};
+  Object.keys(pillars).forEach(k=>{
+    adjustedScores[k] = Math.max(1, Math.min(10, pillars[k] - penalty[k]));
+  });
+
+  // Overall growth score (0-100)
+  let rawScore = 0;
+  Object.keys(weights).forEach(k=>{
+    rawScore += adjustedScores[k] * weights[k];
+  });
+  let growthScore = Math.round(rawScore * 10); // scale 1-10 avg -> 0-100
+  growthScore = Math.max(5, Math.min(98, growthScore));
+
+  // Determine bottleneck = lowest weighted-adjusted pillar
+  let weightedAdjusted = {};
+  Object.keys(adjustedScores).forEach(k=>{
+    weightedAdjusted[k] = adjustedScores[k]; // pure score used for bottleneck, weight used for overall
+  });
+  const bottleneckKey = Object.keys(weightedAdjusted).reduce((a,b)=> weightedAdjusted[a] <= weightedAdjusted[b] ? a : b);
+
+  // Stage classification
+  let stage, stageColor;
+  if(growthScore < 35){ stage="STRUGGLING — Foundation Needs Work"; stageColor="var(--neon-red)"; }
+  else if(growthScore < 55){ stage="EARLY GROWTH — Building Momentum"; stageColor="var(--neon-amber)"; }
+  else if(growthScore < 75){ stage="STEADY GROWTH — Scaling Phase"; stageColor="var(--neon-cyan)"; }
+  else { stage="HIGH GROWTH — Optimization Phase"; stageColor="var(--neon-green)"; }
+
+  // ---- Render Score Ring ----
+  const circumference = 2 * Math.PI * 68;
+  const circle = document.getElementById('scoreCircle');
+  circle.setAttribute('stroke-dasharray', circumference);
+  let scoreColor = growthScore<35?"var(--neon-red)":growthScore<55?"var(--neon-amber)":growthScore<75?"var(--neon-cyan)":"var(--neon-green)";
+  circle.style.stroke = scoreColor;
+  setTimeout(()=>{
+    const offset = circumference - (growthScore/100)*circumference;
+    circle.style.strokeDashoffset = offset;
+  }, 100);
+
+  // Animate number count-up
+  animateCount('scoreVal', growthScore);
+  document.getElementById('scoreVal').style.color = scoreColor;
+
+  document.getElementById('scoreHeadline').textContent = `${bizName}'s Growth Diagnosis`;
+  document.getElementById('scoreSummary').textContent = buildSummaryText(bizType, bizAge, growthScore, bottleneckKey, pillarLabels);
+  const stageTag = document.getElementById('stageTag');
+  stageTag.textContent = stage;
+  stageTag.style.color = stageColor;
+  stageTag.style.borderColor = stageColor;
+  stageTag.style.background = "rgba(255,255,255,0.04)";
+
+  // ---- Render Pillars ----
+  const pillarsGrid = document.getElementById('pillarsGrid');
+  pillarsGrid.innerHTML = "";
+  Object.keys(pillarLabels).forEach(k=>{
+    const score = adjustedScores[k];
+    const pct = score*10;
+    const color = pillarColors[k];
+    const card = document.createElement('div');
+    card.className='pillar-card';
+    card.innerHTML = `
+      <div class="ph">
+        <span class="pname">${pillarLabels[k]}</span>
+        <span class="pscore" style="color:${color}">${score.toFixed(1)}/10</span>
+      </div>
+      <div class="bar-track"><div class="bar-fill" style="width:0%; background:${color};" data-pct="${pct}"></div></div>
+    `;
+    pillarsGrid.appendChild(card);
+  });
+  setTimeout(()=>{
+    document.querySelectorAll('.bar-fill').forEach(b=>{ b.style.width = b.dataset.pct+"%"; });
+  }, 150);
+
+  // ---- Bottleneck Text ----
+  document.getElementById('bottleneckTitle').textContent = `⚠ Primary Bottleneck: ${pillarLabels[bottleneckKey]}`;
+  document.getElementById('bottleneckText').innerHTML = buildBottleneckText(bottleneckKey, bizType, selectedChallenges);
+
+  // ---- Recommendations ----
+  const recos = buildRecommendations(bottleneckKey, bizType, goal, selectedChallenges, adjustedScores, country);
+  const recoList = document.getElementById('recoList');
+  recoList.innerHTML = "";
+  recos.forEach((r,i)=>{
+    const item = document.createElement('div');
+    item.className='reco-item';
+    item.innerHTML = `
+      <div class="reco-rank">${i+1}</div>
+      <div class="reco-body">
+        <h5>${r.title}</h5>
+        <p>${r.desc}</p>
+        <div class="reco-tags">${r.tags.map(t=>`<span class="reco-tag">${t}</span>`).join('')}</div>
+      </div>
+    `;
+    recoList.appendChild(item);
+  });
+
+  // ---- 90-Day Roadmap ----
+  const roadmap = buildRoadmap(bottleneckKey, bizType, goal);
+  const roadmapGrid = document.getElementById('roadmapGrid');
+  roadmapGrid.innerHTML = "";
+  roadmap.forEach(phase=>{
+    const card = document.createElement('div');
+    card.className='road-card';
+    card.innerHTML = `
+      <div class="rh">${phase.title}</div>
+      <ul>${phase.items.map(i=>`<li>${i}</li>`).join('')}</ul>
+    `;
+    roadmapGrid.appendChild(card);
+  });
+
+  // Store for download
+  window.__lastReport = {
+    bizName, country, bizType, bizAge, revenue, goal, notes,
+    pillars: adjustedScores, growthScore, stage, bottleneckKey, pillarLabels,
+    recos, roadmap, challenges: Array.from(selectedChallenges)
+  };
+}
+
+function animateCount(elId, target){
+  const el = document.getElementById(elId);
+  let curr = 0;
+  const step = Math.max(1, Math.round(target/40));
+  const t = setInterval(()=>{
+    curr += step;
+    if(curr >= target){ curr = target; clearInterval(t); }
+    el.textContent = curr;
+  }, 20);
+}
+
+function buildSummaryText(bizType, bizAge, score, bottleneckKey, pillarLabels){
+  const ageText = {idea:"in the idea stage", "0-1":"in your first year", "1-3":"in early growth (1-3 yrs)", "3-7":"in established growth (3-7 yrs)", "7+":"as a mature business (7+ yrs)"};
+  return `As a ${bizType} business ${ageText[bizAge]}, your overall growth score is ${score}/100. Your data shows ${pillarLabels[bottleneckKey]} is currently the area holding back your next stage of growth — this is where focused action will have the biggest impact.`;
+}
+
+function buildBottleneckText(key, bizType, challenges){
+  const texts = {
+    acquisition: `Your business is not generating enough consistent, qualified leads. This is the #1 reason revenue plateaus — without a predictable inflow of new customers, every other improvement (retention, operations, pricing) has a lower ceiling. For a ${bizType.toLowerCase()} business, this usually means your marketing channels are too narrow, inconsistent, or not matched to where your ideal customers actually spend time.`,
+    retention: `You're likely spending too much effort acquiring customers who don't come back. Low retention silently drains growth — it means you're constantly refilling a leaky bucket instead of compounding your customer base. Improving retention by even 10-15% typically has a bigger profit impact than acquiring new customers.`,
+    operations: `Your business growth is currently capped by your own time and bandwidth, not by market demand. Without systems, SOPs, or delegation, you become the bottleneck — every new customer adds more manual work instead of compounding leverage. This is extremely common in solo and small-team businesses.`,
+    finance: `Your pricing, margins, or cash flow management are limiting how much you can reinvest in growth. Many businesses at this stage are underpriced relative to the value they deliver, or lack visibility into which products/services are actually profitable.`
+  };
+  let base = texts[key];
+  if(challenges.has('cashflow') && key !== 'finance'){
+    base += " Cash flow stress was also flagged, which compounds this issue — prioritize fixing the core bottleneck first, as it's likely the root cause.";
+  }
+  return base;
+}
+
+function buildRecommendations(bottleneckKey, bizType, goal, challenges, scores, country){
+  const recoBank = {
+    acquisition: [
+      {title:"Pick ONE primary acquisition channel and go deep", desc:"Most businesses spread thin across 4-5 channels with no real depth. Choose the single channel where your ideal customers already are (e.g. Instagram for visual/creator businesses, Google/SEO for service businesses, LinkedIn for B2B) and commit 80% of your marketing effort there for 90 days.", tags:["Marketing","High Priority"]},
+      {title:"Build a simple referral or word-of-mouth incentive", desc:"Offer existing customers a small, specific reward (discount, free add-on, cash bonus) for referring one new customer. Referred customers convert faster and cost nothing in ad spend.", tags:["Low Cost","Quick Win"]},
+      {title:"Create one high-intent lead magnet", desc:"A free checklist, mini-guide, or consultation that solves a small piece of your customer's problem, in exchange for contact details. This builds a list you own, independent of any platform's algorithm.", tags:["Lead Gen"]},
+      {title:"Audit your conversion path", desc:"Before spending more on traffic, check whether the people who already find you can easily say yes — is your pricing clear, is contact/checkout frictionless, do you follow up with leads who don't convert immediately?", tags:["Conversion"]}
+    ],
+    retention: [
+      {title:"Set up a simple post-purchase follow-up", desc:"A short message 3-7 days after purchase asking if everything's okay, with an easy way to reorder or ask questions. This single habit measurably increases repeat purchase rate.", tags:["Quick Win","Retention"]},
+      {title:"Introduce a loyalty or repeat-customer perk", desc:"This doesn't need to be complex — even a simple 'every 5th order gets 10% off' or priority access for returning customers increases lifetime value significantly.", tags:["Loyalty"]},
+      {title:"Segment your customers by value", desc:"Identify your top 20% of customers by revenue or frequency. Give them slightly more personal attention — this group usually drives disproportionate revenue and referrals.", tags:["Segmentation"]},
+      {title:"Ask for feedback systematically", desc:"A short, consistent feedback request after each purchase or project surfaces retention-killing issues before they cause silent churn.", tags:["Feedback"]}
+    ],
+    operations: [
+      {title:"Document your 3 most repeated tasks as SOPs", desc:"Write down, step-by-step, how you do your 3 most frequent tasks. This is the first step toward delegation and is often the highest-leverage hour you can spend this month.", tags:["Systems","High Priority"]},
+      {title:"Identify ONE task to delegate or automate this month", desc:"Pick the lowest-skill, most time-consuming task you do regularly (scheduling, data entry, basic customer replies) and either automate it with a simple tool or hand it to a part-time/freelance hire.", tags:["Delegation"]},
+      {title:"Set fixed 'focus blocks' for growth work", desc:"Without structure, growth activities (marketing, strategy, outreach) get crowded out by daily operations. Block 3-5 hours weekly that are protected exclusively for growth tasks.", tags:["Time Management"]},
+      {title:"Use a single tool to track all customer/order info", desc:"Many small businesses still manage everything via WhatsApp/memory. A simple spreadsheet or lightweight CRM prevents dropped leads and missed follow-ups as you grow.", tags:["Tools"]}
+    ],
+    finance: [
+      {title:"Recalculate your true profit margin per product/service", desc:"Many businesses price based on competitors or gut feeling rather than actual costs + desired margin. Calculate true cost (time, materials, overhead) for your top 3 offerings and compare against current pricing.", tags:["Pricing","High Priority"]},
+      {title:"Test a 10-15% price increase on one offering", desc:"Price increases are the fastest lever to improve margins, and most businesses underestimate how price-insensitive their best customers are. Test on one product/service line first.", tags:["Quick Win"]},
+      {title:"Separate business and personal finances completely", desc:"If not already done, this is foundational — it makes your real profitability visible and is essential before any serious growth investment decisions.", tags:["Foundation"]},
+      {title:"Build a 3-month cash flow forecast", desc:"Map expected income and expenses for the next 3 months. This single document prevents most of the 'surprise' cash crunches that derail growing businesses.", tags:["Planning"]}
+    ]
+  };
+
+  let recos = recoBank[bottleneckKey].slice(0,4);
+
+  // Add one goal-specific recommendation
+  const goalRecos = {
+    revenue: {title:"Identify your single highest-margin offer and promote it harder", desc:"Not all revenue is equal — find the product/service with the best margin-to-effort ratio and make it the centerpiece of your next 90 days of marketing.", tags:["Revenue Focus"]},
+    customers: {title:"Map your ideal customer profile precisely", desc:"Write down age, income level, problem, and where they spend time online/offline for your single best customer type. Vague targeting is the #1 cause of wasted marketing spend.", tags:["Targeting"]},
+    efficiency: {title:"Track your time for one week", desc:"Most business owners are surprised where their hours actually go. A simple time log reveals exactly what to delegate, automate, or stop doing.", tags:["Efficiency"]},
+    scale: {title:"Identify what breaks first if you doubled orders tomorrow", desc:"This single thought exercise reveals your real scaling bottleneck — usually it's not demand, it's fulfillment, support, or cash flow.", tags:["Scaling"]},
+    stability: {title:"Build a minimum cash reserve target", desc:"Aim for 1-2 months of operating expenses in reserve before aggressive growth spending. This prevents growth investments from creating fragility.", tags:["Stability"]},
+    brand: {title:"Define one clear brand message in a single sentence", desc:"If you can't describe what makes you different in one sentence, customers can't either. This sentence should drive all your marketing copy going forward.", tags:["Branding"]}
+  };
+  recos.push(goalRecos[goal]);
+
+  return recos;
+}
+
+function buildRoadmap(bottleneckKey, bizType, goal){
+  const roadmaps = {
+    acquisition: [
+      {title:"DAYS 1-30: FOUNDATION", items:["Define ideal customer profile precisely","Pick ONE primary marketing channel","Create your first lead magnet or offer","Set up basic tracking (where customers come from)"]},
+      {title:"DAYS 31-60: MOMENTUM", items:["Post/market consistently on chosen channel","Launch referral incentive for existing customers","Test 2-3 messaging variations","Review what's generating actual leads vs. just views"]},
+      {title:"DAYS 61-90: OPTIMIZE", items:["Double down on what's working, cut what isn't","Improve conversion path (pricing clarity, follow-up)","Set a concrete lead target for next quarter","Document your acquisition process as a repeatable system"]}
+    ],
+    retention: [
+      {title:"DAYS 1-30: FOUNDATION", items:["Set up post-purchase follow-up message","Identify your top 20% customers by value","Send a simple feedback request to recent customers","List reasons customers currently don't return"]},
+      {title:"DAYS 31-60: MOMENTUM", items:["Launch a simple loyalty/repeat incentive","Personally reach out to top-value customers","Fix the top 1-2 complaints from feedback","Track repeat purchase rate as a baseline metric"]},
+      {title:"DAYS 61-90: OPTIMIZE", items:["Measure improvement in repeat purchase rate","Expand loyalty program based on response","Build retention metric into monthly review","Identify and fix any remaining churn triggers"]}
+    ],
+    operations: [
+      {title:"DAYS 1-30: FOUNDATION", items:["Document your 3 most repeated tasks","Track your time for one full week","List every task that doesn't need YOU specifically","Choose one simple tool/system to adopt"]},
+      {title:"DAYS 31-60: MOMENTUM", items:["Delegate or automate first identified task","Set protected weekly focus blocks for growth work","Implement basic customer/order tracking system","Measure time saved from first delegation"]},
+      {title:"DAYS 61-90: OPTIMIZE", items:["Delegate/automate second and third tasks","Review what growth work the freed time enabled","Refine SOPs based on real usage","Set operations review as a recurring monthly habit"]}
+    ],
+    finance: [
+      {title:"DAYS 1-30: FOUNDATION", items:["Calculate true margin on top 3 offerings","Separate business and personal finances fully","Build a 3-month cash flow forecast","Identify your least profitable offering"]},
+      {title:"DAYS 31-60: MOMENTUM", items:["Test a price increase on one offering","Cut or reprice your least profitable offering","Set a minimum cash reserve target","Review and reduce 1-2 unnecessary recurring costs"]},
+      {title:"DAYS 61-90: OPTIMIZE", items:["Measure margin improvement from pricing changes","Reinvest improved margin into top acquisition channel","Set monthly finance review as a fixed habit","Set next quarter's profit target based on new baseline"]}
+    ]
+  };
+  return roadmaps[bottleneckKey];
+}
+
+/* ============ DOWNLOAD REPORT ============ */
+function downloadReport(){
+  const r = window.__lastReport;
+  if(!r){ alert("Please run a diagnosis first."); return; }
+
+  let txt = `BUSINESS GROWTH ADVISOR — DIAGNOSTIC REPORT\n`;
+  txt += `================================================\n\n`;
+  txt += `Business: ${r.bizName}\nCountry: ${r.country}\nType: ${r.bizType}\nStage: ${r.bizAge}\n\n`;
+  txt += `OVERALL GROWTH SCORE: ${r.growthScore}/100\nSTAGE: ${r.stage}\n\n`;
+  txt += `PILLAR BREAKDOWN:\n`;
+  Object.keys(r.pillarLabels).forEach(k=>{
+    txt += `- ${r.pillarLabels[k]}: ${r.pillars[k].toFixed(1)}/10\n`;
+  });
+  txt += `\nPRIMARY BOTTLENECK: ${r.pillarLabels[r.bottleneckKey]}\n\n`;
+  txt += `TOP RECOMMENDATIONS:\n`;
+  r.recos.forEach((rec,i)=>{ txt += `${i+1}. ${rec.title}\n   ${rec.desc}\n\n`; });
+  txt += `90-DAY ROADMAP:\n`;
+  r.roadmap.forEach(phase=>{
+    txt += `\n${phase.title}\n`;
+    phase.items.forEach(item=> txt += `  - ${item}\n`);
+  });
+  txt += `\n\nGenerated by Business Growth Advisor — Free AI Diagnostic Tool\n`;
+  txt += `Disclaimer: This report is generated from self-reported data and general business logic. It does not constitute professional financial, legal, or business consulting advice.\n`;
+
+  const blob = new Blob([txt], {type:'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${r.bizName.replace(/\s+/g,'_')}_Growth_Report.txt`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function resetTool(){
+  document.getElementById('resultsWrap').style.display='none';
+  document.getElementById('inputPanel').scrollIntoView({behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
